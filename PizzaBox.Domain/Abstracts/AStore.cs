@@ -8,8 +8,9 @@ namespace PizzaBox.Domain.Abstracts
   /// <summary>
   /// 
   /// </summary>
-  [XmlInclude(typeof(ChicagoStore))]
-  [XmlInclude(typeof(NewYorkStore))]
+  [XmlInclude(typeof(LoversStore))]
+  [XmlInclude(typeof(MockingbirdStore))]
+  [XmlInclude(typeof(GarlandStore))]
   public abstract class AStore
   {
     public string Name { get; set; }

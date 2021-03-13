@@ -6,11 +6,11 @@ namespace PizzaBox.Testing.Tests
   public class StoreTests
   {
     [Fact]
-    public void Test_ChicagoStore_Fact()
+    public void Test_LoversStore_Fact()
     {
       // arrange
-      var sut = new ChicagoStore();
-      var expected = "Chicago Store";
+      var sut = new LoversStore();
+      var expected = "Lovers Ln Store";
 
       // act
       var actual = sut.Name;
@@ -20,12 +20,12 @@ namespace PizzaBox.Testing.Tests
     }
 
     [Theory]
-    [InlineData("Chicago Store")]
+    [InlineData("Lovers Ln Store")]
     [InlineData("")]
-    public void Test_ChicagoStore_Theory(string expected)
+    public void Test_LoversStore_Theory(string expected)
     {
       // arrange
-      var sut = new ChicagoStore();
+      var sut = new LoversStore();
 
       // act
       var actual = sut.Name;

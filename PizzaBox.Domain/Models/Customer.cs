@@ -1,9 +1,11 @@
+using PizzaBox.Domain.Abstracts;
+
 namespace PizzaBox.Domain.Models
 {
   /// <summary>
   /// 
   /// </summary>
-  public class Customer
+  public class Customer : ACustomer
   {
 
   }
