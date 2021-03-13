@@ -46,8 +46,9 @@ namespace PizzaBox.Domain.Singletons
     {
       var stores = new List<AStore>
       {
-        new ChicagoStore(),
-        new NewYorkStore()
+        new LoversStore(),
+        new GarlandStore(),
+        new MockingbirdStore()
       };
 
       var fs = new FileStorage();

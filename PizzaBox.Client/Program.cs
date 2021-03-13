@@ -17,20 +17,13 @@ namespace PizzaBox.Client
     /// <param name="args"></param>
     static void Main(string[] args)
     {
-      //PlayWithStore();
-      AsACustomer();
+      // AsACustomer();
+      startProgram();
     }
 
     /// <summary>
     /// 
     /// </summary>
-    public static void PlayWithStore()
-    {
-      foreach (var store in StoreSingleton.Instance.Stores)
-      {
-        Console.WriteLine(store);
-      }
-    }
 
     public static void AsACustomer()
     {
@@ -64,6 +57,41 @@ namespace PizzaBox.Client
           // run the code for view order history
           break;
       }
+    }
+
+    public static void startProgram()
+    {
+      System.Console.WriteLine("Welcome to Lover's Pizza. What would you like to do?");
+      System.Console.WriteLine("1. Place Order");
+      System.Console.WriteLine("2. View Order History");
+      System.Console.WriteLine("3. Exit");
+
+      var input = Console.ReadLine();
+
+      switch (input)
+      {
+        case "1" :
+          // var os = new OrderSingleton();
+          // os.placeOrder();
+          break;
+        
+        case "2" :
+          view();
+          break;
+
+        case "3" :
+          break;
+        
+        default: 
+          Console.WriteLine("Please choose an option from the menu");
+          startProgram();
+          break;
+      }
+    }
+
+    public static void view()
+    {
+      Console.WriteLine("view");
     }
   }
 }
