@@ -17,50 +17,14 @@ namespace PizzaBox.Client
     /// <param name="args"></param>
     static void Main(string[] args)
     {
-      // AsACustomer();
-      startProgram();
+      int maxCount = 5;
+      startProgram(maxCount);
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-
-    public static void AsACustomer()
+    public static void startProgram(int count)
     {
-      var ss = StoreSingleton.Instance;
+      count--;
 
-      ss.Seeding();
-
-      // print all the stores available, must be from file or db
-      foreach (var item in ss.Stores)
-      {
-        System.Console.WriteLine(item);
-      }
-
-      // select a store
-      var input = Console.ReadLine();
-
-      // print the customer menu
-      System.Console.WriteLine("1. Place Order");
-      System.Console.WriteLine("2. View Order History");
-      System.Console.WriteLine("3. Exit");
-
-      // select a menu option
-      var input2 = Console.ReadLine();
-
-      switch (input2)
-      {
-        case "1":
-          // run the code dor placing order
-          break;
-        case "2":
-          // run the code for view order history
-          break;
-      }
-    }
-
-    public static void startProgram()
-    {
       System.Console.WriteLine("Welcome to Lover's Pizza. What would you like to do?");
       System.Console.WriteLine("1. Place Order");
       System.Console.WriteLine("2. View Order History");
@@ -71,21 +35,32 @@ namespace PizzaBox.Client
       switch (input)
       {
         case "1" :
-          // var os = new OrderSingleton();
-          // os.placeOrder();
-          break;
+          var os = new Order();
+          os.placeOrder();
+          if (!os.hasOrder())
+          {
+            startProgram(count);
+          }
+        break;
         
         case "2" :
           view();
-          break;
+        break;
 
         case "3" :
-          break;
+        break;
         
         default: 
-          Console.WriteLine("Please choose an option from the menu");
-          startProgram();
-          break;
+          if (count != 0)
+          {
+            Console.WriteLine("Please choose an option from the menu");
+            startProgram(count);
+          }
+          else
+          {
+            Console.WriteLine("Exceeded number of invalid entries");
+          }
+        break;
       }
     }
 

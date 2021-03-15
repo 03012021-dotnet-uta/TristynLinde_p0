@@ -7,6 +7,7 @@ namespace PizzaBox.Domain.Models
   /// </summary>
   public class CustomPizza : APizza
   {
+
     protected override void AddCrust()
     {
       throw new System.NotImplementedException();

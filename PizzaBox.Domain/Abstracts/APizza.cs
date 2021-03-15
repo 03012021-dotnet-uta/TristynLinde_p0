@@ -17,14 +17,6 @@ namespace PizzaBox.Domain.Abstracts
     /// </summary>
     public APizza()
     {
-      FactoryMethod();
-    }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    private void FactoryMethod()
-    {
       AddCrust();
       AddSize();
       AddToppings();
