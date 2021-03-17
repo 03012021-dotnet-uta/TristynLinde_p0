@@ -8,6 +8,31 @@
       <Name>Garland Rd Store</Name>
     </Store>
     <Pizzas>
+      <APizza xsi:type="WhitePizza">
+        <Crust>
+          <Name>Thin</Name>
+          <Price>0</Price>
+        </Crust>
+        <Size>
+          <Name>Medium</Name>
+          <Price>12.00</Price>
+        </Size>
+        <Toppings>
+          <Topping>
+            <Name>Spinach</Name>
+            <Price>1</Price>
+          </Topping>
+          <Topping>
+            <Name>Broccoli</Name>
+            <Price>1</Price>
+          </Topping>
+          <Topping>
+            <Name>Bell Peppers</Name>
+            <Price>1</Price>
+          </Topping>
+        </Toppings>
+        <Price>15.00</Price>
+      </APizza>
       <APizza xsi:type="CustomPizza">
         <Crust>
           <Name>Thin</Name>
@@ -19,57 +44,17 @@
         </Size>
         <Toppings>
           <Topping>
-            <Name>Extra Cheese</Name>
+            <Name>Pepperoni</Name>
             <Price>1</Price>
           </Topping>
           <Topping>
             <Name>Italian Sausage</Name>
             <Price>1</Price>
           </Topping>
-          <Topping>
-            <Name>Onion</Name>
-            <Price>1</Price>
-          </Topping>
         </Toppings>
-        <Price>15.00</Price>
+        <Price>14.00</Price>
       </APizza>
     </Pizzas>
-    <Price>15.00</Price>
-  </Order>
-  <Order>
-    <Customer>
-      <Name>Tristyn Linde</Name>
-    </Customer>
-    <Store xsi:type="GarlandStore">
-      <Name>Garland Rd Store</Name>
-    </Store>
-    <Pizzas>
-      <APizza xsi:type="BBQPizza">
-        <Crust>
-          <Name>Thin</Name>
-          <Price>0</Price>
-        </Crust>
-        <Size>
-          <Name>Medium</Name>
-          <Price>12.00</Price>
-        </Size>
-        <Toppings>
-          <Topping>
-            <Name>Chicken</Name>
-            <Price>1</Price>
-          </Topping>
-          <Topping>
-            <Name>Mushrooms</Name>
-            <Price>1</Price>
-          </Topping>
-          <Topping>
-            <Name>Onions</Name>
-            <Price>1</Price>
-          </Topping>
-        </Toppings>
-        <Price>15.00</Price>
-      </APizza>
-    </Pizzas>
-    <Price>15.00</Price>
+    <Price>44.00</Price>
   </Order>
 </ArrayOfOrder>

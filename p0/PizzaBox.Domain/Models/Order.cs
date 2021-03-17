@@ -63,11 +63,10 @@ namespace PizzaBox.Domain.Models
       Console.WriteLine("Would you like to order from our menu or create a custom pizza?");
       Console.WriteLine("1. Our Menu");
       Console.WriteLine("2. Custom Pizza");
-      Console.WriteLine("3. Go Back");
 
       var input = Console.ReadLine();
 
-      while (!(input.Equals("1") || input.Equals("2") || input.Equals("3")))
+      while (!(input.Equals("1") || input.Equals("2")))
       {
         Console.WriteLine("Please choose an option from the list.");
         input = Console.ReadLine();
@@ -94,11 +93,10 @@ namespace PizzaBox.Domain.Models
       Console.WriteLine("1. White Pizza");
       Console.WriteLine("2. Ricotta Pizza");
       Console.WriteLine("3. Barbecue Chicken Pizza");
-      Console.WriteLine("4. Go Back");
 
       var input = Console.ReadLine();
 
-      while (!(input.Equals("1") || input.Equals("2") || input.Equals("3") || input.Equals("4")))
+      while (!(input.Equals("1") || input.Equals("2") || input.Equals("3")))
       {
         Console.WriteLine("Please choose an option from the list.");
         input = Console.ReadLine();
@@ -132,10 +130,6 @@ namespace PizzaBox.Domain.Models
             addPizzaToOrder(toAdd3);
           }
         break;
-
-        case "4" :
-          placeOrder();
-        break;
       }
     }
 
@@ -162,11 +156,10 @@ namespace PizzaBox.Domain.Models
       Console.WriteLine("1. Small (12 inches) - $10.00");
       Console.WriteLine("2. Medium (14 inches) - $12.00");
       Console.WriteLine("3. Large (16 inches) - $13.50");
-      Console.WriteLine("4. Go Back");
 
       var input = Console.ReadLine();
 
-      while (!(input.Equals("1") || input.Equals("2") || input.Equals("3") || input.Equals("4")))
+      while (!(input.Equals("1") || input.Equals("2") || input.Equals("3")))
       {
         Console.WriteLine("Please choose an option from the list.");
         input = Console.ReadLine();
@@ -188,13 +181,6 @@ namespace PizzaBox.Domain.Models
           size.Name = "Large";
           size.Price = 13.50M;
         break;
-
-        case "4" :
-        break;
-
-        default: 
-          Console.WriteLine("Please choose an option from the list");
-        break;
       }
 
       return size;
@@ -207,11 +193,10 @@ namespace PizzaBox.Domain.Models
       Console.WriteLine("Which type of crust would you like?");
       Console.WriteLine("1. Thin");
       Console.WriteLine("2. Thick - Adds $4.99");
-      Console.WriteLine("3. Go Back");
 
       var input = Console.ReadLine();
 
-      while (!(input.Equals("1") || input.Equals("2") || input.Equals("3")))
+      while (!(input.Equals("1") || input.Equals("2")))
       {
         Console.WriteLine("Please choose an option from the list.");
         input = Console.ReadLine();
@@ -227,9 +212,6 @@ namespace PizzaBox.Domain.Models
         case "2" :
           crust.Name = "Thick";
           crust.Price = 4.99M;
-        break;
-
-        case "3" :
         break;
       }
 

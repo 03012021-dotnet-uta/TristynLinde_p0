@@ -122,7 +122,6 @@ namespace PizzaBox.Client
     {
       var os = OrderSingleton.Instance;
       
-      order.viewOrder();
       Console.WriteLine("Please enter your name:");
 
       if (order.Customer == null)
