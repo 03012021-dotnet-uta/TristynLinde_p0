@@ -343,6 +343,8 @@ namespace PizzaBox.Domain.Models
 
     protected void doNext()
     {
+      viewOrder();
+      
       Console.WriteLine("What would you like to do next?");
       Console.WriteLine("1. Add another pizza");
       Console.WriteLine("2. Checkout");
