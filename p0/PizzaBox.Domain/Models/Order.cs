@@ -13,6 +13,7 @@ namespace PizzaBox.Domain.Models
     public Customer Customer { get; set; }
     public AStore Store { get; set; }
     public List<APizza> Pizzas { get; set; }
+    public decimal Price { get; set; }
 
     private bool _ordered = false;
 
@@ -324,6 +325,12 @@ namespace PizzaBox.Domain.Models
 
     protected void addPizzaToOrder(APizza pizza)
     {
+      pizza.Price = pizza.Crust.Price + pizza.Size.Price;
+      foreach(Topping t in pizza.Toppings)
+      {
+        pizza.Price += t.Price;
+      }
+
       if (Pizzas == null)
       {
         Pizzas = new List<APizza>();
@@ -375,7 +382,10 @@ namespace PizzaBox.Domain.Models
           else 
             Console.WriteLine("and " + t.Name);
         }
+
+        Price += p.Price;
       }
+      Console.WriteLine("Your total order price is " + Price);
     }
 
     

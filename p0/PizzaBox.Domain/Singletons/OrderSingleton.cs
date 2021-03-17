@@ -32,7 +32,7 @@ namespace PizzaBox.Domain.Singletons
         {
             var fs = new FileStorage();
 
-            // Orders = Deserialize();
+            Orders = Deserialize();
             Orders.Add(o);
             fs.WriteToXml<Order>(Orders);
         }

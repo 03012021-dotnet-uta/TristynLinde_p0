@@ -19,17 +19,17 @@ namespace PizzaBox.Domain.Abstracts
     public Crust Crust { get; set; }
     public Size Size { get; set; }
     public List<Topping> Toppings { get; set; }
+    public decimal Price { get; set; }
     protected bool success = false;
 
     public bool getSuccess()
     {
-      if (!(Crust.Name.Equals("") || Size.Name.Equals("")))
-        success = true;
+      success = true;
 
       foreach (Topping t in Toppings)
         if (t.Name.Equals(""))
           success = false;
-          
+
       return success;
     }
 

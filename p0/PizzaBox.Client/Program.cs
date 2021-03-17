@@ -92,9 +92,10 @@ namespace PizzaBox.Client
               if (t != last)
                 Console.Write(t.Name + ", ");
               else 
-                Console.WriteLine("and " + t.Name);
+                Console.WriteLine("and " + t.Name + " - " + p.Price);
             }
           }
+          Console.WriteLine("Total Price: " + o.Price);
         }
       }
     }
@@ -113,6 +114,8 @@ namespace PizzaBox.Client
       order.Customer.Name = Console.ReadLine();
       
       os.Serialize(order);
+
+      Console.WriteLine("Thank you for ordering from Lover's Pizza!");
     }
   }
 }
