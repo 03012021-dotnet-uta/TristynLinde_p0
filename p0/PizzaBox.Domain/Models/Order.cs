@@ -338,6 +338,7 @@ namespace PizzaBox.Domain.Models
       Pizzas.Add(pizza);
       _ordered = true;
       Console.WriteLine("Your pizza has been added to your order.");
+      Console.WriteLine();
       doNext();
     }
 
@@ -388,6 +389,7 @@ namespace PizzaBox.Domain.Models
         Price += p.Price;
       }
       Console.WriteLine("Your total order price is " + Price);
+      Console.WriteLine();
     }
 
     
