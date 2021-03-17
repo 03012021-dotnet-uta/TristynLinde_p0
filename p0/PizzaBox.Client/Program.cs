@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using PizzaBox.Domain;
 using PizzaBox.Domain.Abstracts;
 using PizzaBox.Domain.Models;
 using PizzaBox.Domain.Singletons;
@@ -11,18 +13,20 @@ namespace PizzaBox.Client
   /// </summary>
   class Program
   {
+    public static List<Order> Orders { get; set; }
+
     /// <summary>
     /// 
     /// </summary>
-    /// <param name="args"></param>
     static void Main(string[] args)
     {
       int maxCount = 5;
       startProgram(maxCount);
     }
 
-    public static void startProgram(int count)
+    protected static void startProgram(int count)
     {
+      var os = new Order();
       count--;
 
       System.Console.WriteLine("Welcome to Lover's Pizza. What would you like to do?");
@@ -35,12 +39,12 @@ namespace PizzaBox.Client
       switch (input)
       {
         case "1" :
-          var os = new Order();
           os.placeOrder();
           if (!os.hasOrder())
           {
             startProgram(count);
           }
+          checkout(os);
         break;
         
         case "2" :
@@ -66,7 +70,49 @@ namespace PizzaBox.Client
 
     public static void view()
     {
-      Console.WriteLine("view");
+      var os = OrderSingleton.Instance;
+      var orders = os.Deserialize();
+
+      Console.WriteLine("Please enter your name:");
+
+      var input = Console.ReadLine();
+
+      foreach (Order o in orders)
+      {
+        if (o.Customer.Name == input)
+        {
+          Console.WriteLine(o.Pizzas.Count + " pizza(s): ");
+          foreach (APizza p in o.Pizzas)
+          {
+            Console.Write(p.Size.Name + " pizza with " + p.Crust.Name.ToLower() + " crust and ");
+
+            Topping last = p.Toppings.Last();
+            foreach (Topping t in p.Toppings)
+            {
+              if (t != last)
+                Console.Write(t.Name + ", ");
+              else 
+                Console.WriteLine("and " + t.Name);
+            }
+          }
+        }
+      }
+    }
+
+    protected static void checkout(Order order)
+    {
+      var os = OrderSingleton.Instance;
+      
+      order.viewOrder();
+      Console.WriteLine("Please enter your name:");
+
+      if (order.Customer == null)
+      {
+        order.Customer = new Customer();
+      }
+      order.Customer.Name = Console.ReadLine();
+      
+      os.Serialize(order);
     }
   }
 }

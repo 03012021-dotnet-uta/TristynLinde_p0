@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using PizzaBox.Domain.Abstracts;
 
 namespace PizzaBox.Domain.Models
@@ -7,20 +9,24 @@ namespace PizzaBox.Domain.Models
   /// </summary>
   public class CustomPizza : APizza
   {
-
-    protected override void AddCrust()
+    public CustomPizza()
     {
-      throw new System.NotImplementedException();
+      Size = AddSize();
+      Crust = AddCrust();
+      Toppings = AddToppings();
     }
 
-    protected override void AddSize()
+    protected Crust AddCrust()
     {
-      throw new System.NotImplementedException();
+      Crust c = new Crust();
+      return c;
     }
 
-    protected override void AddToppings()
+    protected List<Topping> AddToppings()
     {
-      throw new System.NotImplementedException();
+      List<Topping> t = new List<Topping>();
+
+      return t;
     }
   }
 }

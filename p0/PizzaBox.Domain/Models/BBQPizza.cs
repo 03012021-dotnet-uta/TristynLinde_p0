@@ -3,21 +3,24 @@ using PizzaBox.Domain.Abstracts;
 
 namespace PizzaBox.Domain.Models
 {
-    class BBQPizza : APizza
+    public class BBQPizza : APizza
     {
-        protected override void AddCrust()
+        public BBQPizza()
         {
-            Crust = new Crust();
-            Crust.Name = "Thin";
-            Crust.Price = 0M;
+            Crust = AddCrust();
+            Size = AddSize();
+            Toppings = AddToppings();
         }
 
-        protected override void AddSize()
+        protected Crust AddCrust()
         {
-            Size = new Size();
+            Crust crust = new Crust();
+            crust.Name = "Thin";
+            crust.Price = 0M;
+            return crust;
         }
 
-        protected override void AddToppings()
+        protected List<Topping> AddToppings()
         {
             Topping top1 = new Topping();
             Topping top2 = new Topping();
@@ -27,12 +30,14 @@ namespace PizzaBox.Domain.Models
             top2.Name = "Mushrooms";
             top3.Name = "Onions";
 
-            Toppings = new List<Topping>
+            List<Topping> toppings = new List<Topping>
             {
                 top1,
                 top2,
                 top3
             };
+
+            return toppings;
         }
     }
 }
