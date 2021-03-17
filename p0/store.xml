@@ -8,35 +8,35 @@
       <Name>Garland Rd Store</Name>
     </Store>
     <Pizzas>
-      <APizza xsi:type="WhitePizza">
+      <APizza xsi:type="RicottaPizza">
         <Crust>
           <Name>Thin</Name>
           <Price>0</Price>
         </Crust>
         <Size>
-          <Name>Medium</Name>
-          <Price>12.00</Price>
+          <Name>Small</Name>
+          <Price>10.00</Price>
         </Size>
         <Toppings>
           <Topping>
-            <Name>Spinach</Name>
+            <Name>Tomatos</Name>
             <Price>1</Price>
           </Topping>
           <Topping>
-            <Name>Broccoli</Name>
+            <Name>Basil</Name>
             <Price>1</Price>
           </Topping>
           <Topping>
-            <Name>Bell Peppers</Name>
+            <Name>Ricotta Cheese</Name>
             <Price>1</Price>
           </Topping>
         </Toppings>
-        <Price>15.00</Price>
+        <Price>13.00</Price>
       </APizza>
       <APizza xsi:type="CustomPizza">
         <Crust>
-          <Name>Thin</Name>
-          <Price>0</Price>
+          <Name>Thick</Name>
+          <Price>4.99</Price>
         </Crust>
         <Size>
           <Name>Medium</Name>
@@ -51,10 +51,14 @@
             <Name>Italian Sausage</Name>
             <Price>1</Price>
           </Topping>
+          <Topping>
+            <Name>Extra Cheese</Name>
+            <Price>1</Price>
+          </Topping>
         </Toppings>
-        <Price>14.00</Price>
+        <Price>19.99</Price>
       </APizza>
     </Pizzas>
-    <Price>44.00</Price>
+    <Price>45.99</Price>
   </Order>
 </ArrayOfOrder>

@@ -354,6 +354,8 @@ namespace PizzaBox.Domain.Models
     public void viewOrder()
     {
       Console.WriteLine("Your order:");
+
+      Price = 0;
       
       foreach (APizza p in Pizzas)
       {
