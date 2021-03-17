@@ -87,15 +87,33 @@ namespace PizzaBox.Client
             Console.Write(p.Size.Name + " pizza with " + p.Crust.Name.ToLower() + " crust and ");
 
             Topping last = p.Toppings.Last();
+            bool repeat;
             foreach (Topping t in p.Toppings)
             {
-              if (t != last)
-                Console.Write(t.Name + ", ");
-              else 
-                Console.WriteLine("and " + t.Name + " - " + p.Price);
+                repeat = false;
+                var index1 = p.Toppings.IndexOf(t);
+
+                foreach (Topping c in p.Toppings)
+                {
+                  var index2 = p.Toppings.IndexOf(c);
+
+                  if (index1 != index2 && index2 > index1 && t.Name == c.Name)
+                  {
+                    repeat = true;
+                  }
+                }
+
+                if (!repeat)
+                {
+                  if (t != last)
+                    Console.Write(t.Name + ", ");
+                  else 
+                    Console.WriteLine("and " + t.Name + " - " + p.Price);
+                }
             }
           }
           Console.WriteLine("Total Price: " + o.Price);
+          Console.WriteLine();
         }
       }
     }

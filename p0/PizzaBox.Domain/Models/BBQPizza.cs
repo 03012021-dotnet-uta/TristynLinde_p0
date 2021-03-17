@@ -22,6 +22,11 @@ namespace PizzaBox.Domain.Models
 
         protected List<Topping> AddToppings()
         {
+            if (Toppings == null)
+            {
+                Toppings = new List<Topping>();
+            }
+
             Topping top1 = new Topping();
             Topping top2 = new Topping();
             Topping top3 = new Topping();
@@ -30,14 +35,25 @@ namespace PizzaBox.Domain.Models
             top2.Name = "Mushrooms";
             top3.Name = "Onions";
 
-            List<Topping> toppings = new List<Topping>
-            {
-                top1,
-                top2,
+            List<Topping> toppings = new List<Topping> {
+                top1, 
+                top2, 
                 top3
             };
 
-            return toppings;
+            foreach (Topping top in toppings)
+            {
+                foreach (Topping t in Toppings)
+                {
+                    if (t.Name == top.Name)
+                    {
+                        Toppings.Remove(t);
+                    }
+                }
+                Toppings.Add(top);
+            }
+            
+            return Toppings;
         }
     }
 }
