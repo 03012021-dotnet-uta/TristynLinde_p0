@@ -21,7 +21,7 @@ let counter = 1;
 // create string to concatenate to
 let toPrint = "";
 
-function sweetNSalty()
+function printSweetNSalty()
 {
     for (var i = startCount; i <= endCount; i += 1)
     {
@@ -70,5 +70,5 @@ function printNumber()
 }
 
 // run code
-sweetNSalty();
+printSweetNSalty();
 printNumber();
