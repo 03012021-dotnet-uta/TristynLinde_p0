@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Website</title>
+    <link rel="stylesheet" href="styles.css"></link>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400&display=swap" rel="stylesheet"> 
+</head>
+<body>
+    <div class="content">
+        <div class="about">
+            <img src="http://1.bp.blogspot.com/-NGHwBncyA68/UiMm_8b2ZUI/AAAAAAAAAnA/17OGXCKI4zE/s1600/Logo+HTML5.JPG" style="height: 150px;">
+            <h1>About</h1>
+            <p>Some text about our website.</p>
+            <h2>Our Locations</h2>
+            <ul>
+                <li>USA</li>
+                    <ul>
+                        <li><a href="#">New York</a></li>
+                        <li><a href="#">Columbus</a></li>
+                        <li><a href="#">Austin</a></li>
+                        <li><a href="#">Philly</a></li>
+                    </ul>
+                <li>World</li>
+                    <ul>
+                        <li><a href="#">Ottawa</a></li>
+                        <li><a href="#">Sydney</a></li>
+                    </ul>
+            </ul>
+            <h2>Upcoming Classes</h2>
+            <table id="classes">
+                <thead>
+                    <tr>
+                        <th>Location</th>
+                        <th>Topic</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>New York</td>
+                        <td>Javascript & jQuery</td>
+                    </tr>
+                    <tr>
+                        <td>San Fransico</td>
+                        <td>HTML & CSS</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="sign-up">
+            <h2>Sign up!</h2>
+            <form>
+                <div class="form-element">
+                    <label for="name" id="name-label">Name:</label>
+                    <input type="text" id="name"></br>
+                </div>
+                <div class="form-element">
+                    <label for="email" id="email-label">Email:</label>
+                    <input type="text" id="email"></br>
+                </div>
+                <div class="form-element">
+                    <label for="location">Location:</label>
+                    <select id="location">
+                        <option selected>San Francisco</option>
+                        <option>New York</option>
+                    </select>
+                </div>
+                <div id="gender" class="form-element">
+                    <p id="gender-label">Gender:</p>
+                    <div class="move-up">
+                        <label for="female" id="female-label">Female</label>
+                        <input type="radio" name="gender" id="female">
+                        <label for="male">Male</label>
+                        <input type="radio" name="gender" id="male">
+                    </div>
+                </div>
+                <div class="form-element">
+                    <label for="experience" id="experience-label">Experience:</label></br>
+                    <textarea id="experience"></textarea></br>
+                </div>
+                <input type="submit" value="Sign Up" class="form-element" id="submit-button">
+            </form>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p><a href="#" class="links">Twitter</a>&nbsp;&nbsp;&nbsp;&#124;&nbsp;&nbsp;&nbsp;<a href="#" class="links">Facebook</a>&nbsp;&nbsp;&nbsp;&#124;&nbsp;&nbsp;&nbsp;<a href="#" class="links">Flickr</a></p>
+    </div>
+</body>
+</html>

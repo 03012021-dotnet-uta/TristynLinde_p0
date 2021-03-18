@@ -1,0 +1,126 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+.about {
+    width: 35%;
+    float: left;
+    padding-left: 20%;
+}
+
+h1, h2 {
+    font-family: 'Merriweather', serif;
+}
+
+table, th, td {
+    border: 1px solid;
+}
+
+li {
+    font-size: 1.1em;
+}
+
+td {
+    padding-left: 15px;
+}
+
+#classes {
+    width: 400px;
+}
+
+p, label, li, th, td {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.sign-up {
+    width: 25%;
+    float: left;
+    background-color: lightgray;
+    margin-top: 172px;
+    padding-left: 2.5%;
+    padding-bottom: 35px;
+}
+
+form {
+    font-size: 1.1em;
+}
+
+#submit-button {
+    padding: 5px 10px;
+    font-size: .75em;
+    width: 100px;
+    border: none;
+    color: white;
+    background-color: blue;
+}
+
+#submit-button:hover {
+    background-color: #6060f2;
+}
+
+.form-element {
+    margin-bottom: 5px;
+}
+
+#name-label, #email-label {
+    display: inline-block;
+    width: 40px;
+}
+
+#gender {
+    border: 1px solid; 
+    padding-bottom: 5px; 
+    width: 250px;
+}
+
+#gender {
+    margin-top: 10px;
+}
+
+#gender-label {
+    width: 50px;
+    margin-left: 18px;
+    padding-left: 2px;
+    margin-top: -10px;
+    background-color: lightgray;
+}
+
+#female-label {
+    padding-left: 10px;
+}
+
+.move-up {
+    margin-top: -12px;
+}
+
+#experience-label {
+    margin-bottom: 15px;
+}
+
+#experience {
+    width: 285px;
+}
+
+a:hover {
+    color: #6060f2;
+}
+
+#email, #name {
+    width: 250px;
+}
+
+.footer {
+    display: inline-block;
+    width: 100%;
+    float: none;
+    background-color: lightgray;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    padding-bottom: 1px;
+    text-align: center;
+    font-size: 1.1em;
+}
