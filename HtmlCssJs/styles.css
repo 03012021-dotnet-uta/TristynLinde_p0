@@ -27,7 +27,7 @@ td {
 }
 
 #classes {
-    width: 400px;
+    width: 80%;
 }
 
 p, label, li, th, td {
@@ -66,21 +66,19 @@ form {
 
 #name-label, #email-label {
     display: inline-block;
-    width: 40px;
+    width: 45px;
 }
 
 #gender {
     border: 1px solid; 
     padding-bottom: 5px; 
     width: 250px;
-}
-
-#gender {
     margin-top: 10px;
 }
 
 #gender-label {
-    width: 50px;
+    width: 55px;
+    font-size: 1em ;
     margin-left: 18px;
     padding-left: 2px;
     margin-top: -10px;
@@ -100,7 +98,7 @@ form {
 }
 
 #experience {
-    width: 285px;
+    width: 300px;
 }
 
 a:hover {
@@ -123,4 +121,146 @@ a:hover {
     padding-bottom: 1px;
     text-align: center;
     font-size: 1.1em;
+}
+
+
+@media screen and (max-width: 1280px)
+{
+    #email, #name {
+        width: 225px;
+    }
+
+    #experience {
+        width: 275px;
+        height: 75px;
+        margin-bottom: 10px;
+    }
+}
+
+@media screen and (max-width: 1150px)
+{
+    #email, #name {
+        width: 200px;
+    }
+
+    #experience {
+        width: 225px;
+        height: 75px;
+        margin-bottom: 10px;
+    }
+
+    #gender {
+        width: 225px;
+    }
+
+    li, p, form {
+        font-size: 1em;
+    }
+
+    #gender-label {
+        width: 50px;
+    }
+
+    th, td {
+        font-size: .8em;
+    }
+}
+
+@media screen and (max-width: 1085px)
+{
+    #email, #name {
+        width: 175px;
+    }
+
+    #experience, #gender {
+        width: 200x;
+    }
+}
+
+@media screen and (max-width: 996px)
+{
+    .about {
+        width: 80%;
+        float: none;
+    }
+
+    .sign-up {
+        margin-left: 25%;
+        width: 50%;
+        margin-top: 50px;
+        margin-bottom: 100px;
+    }
+
+    form, p, li {
+        font-size: 1.1em;
+    }
+
+    #email, #name {
+        width: 350px;
+    }
+
+    #experience, #gender {
+        width: 400px;
+    }
+
+    #gender-label {
+        width: 55px;
+    }
+}
+
+@media screen and (max-width: 855px)
+{
+    #email, #name {
+        width: 225px;
+    }
+
+    #experience {
+        width: 275px;
+        height: 75px;
+        margin-bottom: 10px;
+    }
+
+    #gender {
+        width: 275px;
+    }
+}
+
+@media screen and (max-width: 725px)
+{
+    #email, #name {
+        width: 200px;
+    }
+
+    #experience {
+        width: 225px;
+        height: 75px;
+        margin-bottom: 10px;
+    }
+
+    #gender {
+        width: 225px;
+    }
+
+    li, p, form {
+        font-size: 1em;
+    }
+
+    #gender-label {
+        width: 50px;
+    }
+
+    th, td {
+        font-size: .8em;
+    }
+}
+
+@media screen and (max-width: 660px)
+{
+    #email, #name {
+        width: 175px;
+    }
+
+    #experience, #gender {
+        width: 200x;
+    }
 }
