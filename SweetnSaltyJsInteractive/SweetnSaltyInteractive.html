@@ -1,0 +1,432 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Tristyn Linde">
+    <title>SweetnSalty Interactive</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap" rel="stylesheet">  
+    <style type="text/css">
+        body {
+            margin: 0;
+            background-color: #A8DBA8;
+            font-family: 'Lora', serif;
+        }
+
+        header {
+            height: 16vh;
+        }
+
+        header h1 {
+            float: left;
+            margin-right: 1%;
+            width: 29%;
+        }
+
+        header h2 {
+            float: left;
+            font-family: 'Noto Sans TC', sans-serif;
+            font-weight: 700;
+            color: #0B486B;
+            padding-top: 6.4vh;
+            margin-bottom: -6.4vh;
+            width: 25%;
+        }
+
+        h1 a {
+            color: black;
+            text-decoration: none;
+            font-family: 'Noto Sans TC', sans-serif;
+            font-weight: 900;
+            font-size: 2em;
+            margin-left: 3%;
+        }
+
+        h1 a:hover {
+            cursor: pointer;
+        }
+
+        form p {
+            font-size: .75em;
+            color: #2B7676;
+            margin: 0;
+            margin-bottom: 15px;
+            margin-left: 5%;
+        }
+
+        #content {
+            margin-left: 2%;
+        }
+
+        #enter p {
+            font-weight: 500;
+        }
+
+        #enter form p {
+            font-weight: 400;
+        }
+        
+        form label {
+            margin-left: 5%;
+            margin-right: 7.5%;
+        }
+
+        form input {
+            width: 50%;
+            height: 25px;
+            background-color: whitesmoke;
+            border: none;
+            border-radius: 2px;
+        }
+
+        #submit, #startGame {
+            background-color: #2B7676;
+            border: none;
+            border-radius: 5px;
+            width: 200px;
+            height: 50px;
+            color: whitesmoke;
+            font-family: 'Noto Sans TC', sans-serif;
+            font-weight: 500;
+        }
+
+        #enter {
+            width: 30%;
+            display: none;
+        }
+
+        .centered {
+            text-align: center;
+        }
+
+        #totals {
+            background-color: 0B486B;
+            margin: 0;
+            margin-left: -3.5%;
+            padding: 50px;
+            color: whitesmoke;
+            font-size: 1.25em;
+            text-align: center;
+        }
+
+        #reload {
+            border: none;
+            border-radius: 2px;
+            margin: 1.5% 0;
+            width: 500px;
+            height: 50px;
+            font-family: 'Noto Sans TC', sans-serif;
+            font-weight: 500;
+            color: #3B8686;
+            background-color: whitesmoke;
+            float: none;
+        }
+
+        #numbers {
+            margin: 1% 3%;
+        }
+
+        #results {
+            background-color: #79BD9A;
+            margin-left: -2%;
+            padding-left: 3%;
+            padding-top: 1%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><a onclick="window.location.reload();">Sweet'nSalty</a></h1>
+        <h2>By Tristyn Linde</h2>
+    </header>
+    <div id="content">
+        <div id="welcome">
+            <h2>Welcome to Sweet'nSalty!</h2>
+            <p>Here's how you play:</p>
+            <ol>
+                <li>Enter a starting value and an ending value.</li>
+                <li>If you like, enter two divisors. The default values are 3 and 5.</li>
+                <li>If you want to specify a number of results per line, do that as well. The default value is 1/100th of the total values to be displayed and you will not be allowed to choose a value lower than that.</li>
+                <li>The game will display each number between the starting and ending values you selected.</li>
+                <li>The game will replace each number that is divisible by your lower divisor with "sweet", your higher divisor with "salty", or if the number is divisible by both, "sweet'nSalty".</li>
+                <li>The game will then calculate the number of "sweet", "salty", and "sweet'nSalty" and tell you the amount of each.</li>
+            </ol>
+            <p>Have fun playing!</p>
+            <input type="submit" id="startGame" class="entry" value="Start Playing">
+        </div>
+        <div id="enter">
+            <p>Please enter your values:</p>
+            <form id="values">
+                <label for="start">Starting value:</label>
+                <input type="number" id="start" name="start"><br>
+                <p>Default value is 1</p>
+                <label for="end">Ending value:</label>
+                <input type="number" id="end" name="end"><br>
+                <p>Default value is 1000</p>
+                <label for="line">Number per line:</label>
+                <input type="number" id="line" name="line"><br>
+                <p>Default value is 1/100th<br>of total values</p>
+                <label for="first">First divisor:</label>
+                <input type="number" id="first" name="first"><br>
+                <p>Default value is 3</p>
+                <label for="second">Second divisor:</label>
+                <input type="number" id="second" name="second"><br>
+                <p>Default value is 5</p><br>
+                <div class="centered">
+                    <input type="submit" id="submit" value="Submit Values">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // create default variables
+        let startNumber = 1;
+        let endNumber = 1000;
+        let numberPerLine = Math.round((endNumber - startNumber)/100);
+        let firstCheck = 3;
+        let secondCheck = 5;
+
+        // create the constants for the strings
+        const sweet = "sweet";
+        const salty = "salty";
+        const sweetNSalty = "sweet'nSalty";
+
+        // create counter variables
+        let sweetCount = 0;
+        let saltyCount = 0;
+        let sweetSaltyCount = 0;
+
+        // create an html variable
+        let html = "<div id=\"results\"><input type=\"button\" id=\"reload\" onclick=\"window.location.reload()\" value=\"Enter new values\"><p id=\"numbers\">";
+
+        document.getElementById('startGame').addEventListener('click', () => {
+            document.getElementById('welcome').style.display = "none";
+            document.getElementById('enter').style.display = "block";
+        })
+
+        let values = document.getElementById('values');
+        values.reset();
+        values.addEventListener('submit', (event) => {
+            event.preventDefault();
+            document.getElementById('enter').style.display = "none";
+            
+            runSweetNSalty();
+        });
+
+        // check values every time they change
+        values.start.addEventListener("change", () => {
+            if (values.start.value)
+            {
+                let tryStart = parseInt(values.start.value);
+                let minEnd = tryStart + 200;
+                let maxEnd = tryStart + 10000;
+
+                if (tryStart < 0)
+                {
+                    alert("Your starting number cannot be negative.");
+                    values.start.value = '';
+                }
+                else if (endNumber < minEnd)
+                {
+                    alert("Your end number cannot be less than 200 away from your start number.");
+                    startNumber = tryStart;
+                }
+                else if (endNumber> maxEnd)
+                {
+                    alert("Your end number cannot be more than 10000 away from your start number.");
+                    startNumber = tryStart;
+                }
+                else 
+                {
+                    startNumber = tryStart;
+                    numberPerLine = Math.round((endNumber - startNumber)/100);
+                }     
+            }
+            else 
+            {
+                startNumber = 1;
+            }
+        });
+
+        values.end.addEventListener("change", () => {
+            if (values.end.value)
+            {
+                let tryEnd = parseInt(values.end.value);
+                let minEnd = startNumber + 200;
+                let maxEnd = startNumber + 10000;
+
+                if (tryEnd < 0)
+                {
+                    alert("Your ending number cannot be negative");
+                    values.end.value = '';
+                }
+                else if (tryEnd < minEnd)
+                {
+                    alert("Your end number cannot be less than 200 away from your start number.");
+                    values.end.value = '';
+                }
+                else if (tryEnd > maxEnd)
+                {
+                    alert("Your end number cannot be more than 10000 away from your start number.");
+                    values.end.value = '';
+                }
+                else 
+                {
+                    endNumber = tryEnd;
+                    numberPerLine = Math.round((endNumber - startNumber)/100);
+                }     
+            }
+            else 
+            {
+                endNumber = 1000;
+            }
+        });
+
+        values.line.addEventListener("change", () => {
+            if (values.line.value)
+            {
+                let tryLine = parseInt(values.line.value);
+                let minLine = Math.round((endNumber - startNumber)/100);
+
+                if (tryLine < 0)
+                {
+                    alert("Your number per line cannot be negative.");
+                    values.line.value = '';
+                }
+                else if (tryLine < minLine)
+                {
+                    alert("Your number per line cannot be less than 1/100th of the total values.");
+                    values.line.value = '';
+                }
+                else 
+                {
+                    numberPerLine = tryLine;
+                }     
+            }
+            else 
+            {
+                numberPerLine = minLine;
+            }
+        });
+
+        values.first.addEventListener("change", () => {
+            if (values.first.value)
+            {
+                let tryFirst = parseInt(values.first.value);
+
+                if (tryFirst < 0)
+                {
+                    alert("Your divisor cannot be negative.");
+                    values.first.value = '';
+                }
+                else if (tryFirst == 0)
+                {
+                    alert("You cannot divide by 0.");
+                    values.first.value = '';
+                }
+                else if (tryFirst == secondCheck)
+                {
+                    alert("You have to have two diferent divisors.");
+                    values.first.value = '';
+                }
+                else 
+                {
+                    firstCheck = tryFirst;
+                }
+            }
+            else 
+            {
+                firstCheck = 3;
+            }
+        });
+
+        values.second.addEventListener("change", () => {
+            if (values.second.value)
+            {
+                let trySecond = parseInt(values.second.value);
+
+                if (trySecond < 0)
+                {
+                    alert("Your divisor cannot be negative.");
+                    values.second.value = '';
+                }
+                else if (trySecond == 0)
+                {
+                    alert("You cannot divide by 0.");
+                    values.second.value = '';
+                }
+                else if (trySecond == firstCheck)
+                {
+                    alert("You have to have two diferent divisors.");
+                    values.second.value = '';
+                }
+                else 
+                {
+                    secondCheck = trySecond;
+                }
+            }
+            else 
+            {
+                secondCheck = 5;
+            }
+        });
+
+        // generate results and add them to the html
+        function runSweetNSalty() {
+            if (firstCheck > secondCheck)
+            {
+                let temp = firstCheck;
+                firstCheck = secondCheck;
+                secondCheck = temp;
+            }
+
+            let counter = 1;
+
+            for (let i = startNumber; i <= endNumber; i += 1)
+            {
+                // check if the number is divisible by both 3 and 5
+                if (i % firstCheck == 0 && i % secondCheck == 0)
+                {
+                    html += sweetNSalty + "&emsp;";
+                    sweetSaltyCount += 1;
+                }
+                // check if the number is only divisible by 3
+                else if (i % firstCheck == 0)
+                {
+                    html += sweet + "&emsp;";
+                    sweetCount += 1;
+                }
+                //check if the number is only divisible by 5
+                else if (i % secondCheck == 0)
+                {
+                    html += salty + "&emsp;";
+                    saltyCount += 1;
+                }
+                // otherwise just add the number
+                else 
+                {
+                    html += i + "&emsp;";
+                }
+
+                // check if the proper number per line has been reached and print those values
+                if (counter % numberPerLine == 0)
+                {
+                    html += "<br><br>"
+                }
+                // increment the counter to check for number per line
+                counter += 1;
+            }
+
+            html += "</p><p id=\"totals\">" 
+            html += `Number of sweet: ${sweetCount} <br>`;
+            html += `Number of salty: ${saltyCount} <br>`
+            html += `Number of sweet'nSalty: ${sweetSaltyCount}</p></div>`;
+
+            document.getElementById('content').innerHTML += `${html}`;
+        }
+    </script>
+</body>
+</html>
