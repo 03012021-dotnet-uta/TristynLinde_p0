@@ -353,6 +353,7 @@ namespace PizzaBox.Domain.Models
     
     public void viewOrder()
     {
+      Console.WriteLine();
       Console.WriteLine("Your order:");
 
       Price = 0;
