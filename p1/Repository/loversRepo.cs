@@ -1,14 +1,15 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Models;
 
 namespace Repository
 {
-    public class loversRepo
+    public class LoversRepo
     {
         private readonly loversContext _context;
-        public loversRepo() { }// create this so that you can test this class without having to also create a context and repo.
-        public loversRepo(loversContext context)
+        public LoversRepo() { }
+        public LoversRepo(loversContext context)
         {
             this._context = context;
         }
@@ -18,17 +19,8 @@ namespace Repository
             /**use the context to call the Db 
             and query for the first usr that matches 
             the first and last name*/
-            //Person user = context.Person.FirstOrDefault(p => p.Fname == user.Fname && p.Lname == user.Lname);
-            Customer user1 = new Customer()
-            {
-                Fname = "Jerry",
-                Lname = "Walker"
-            };
-
-            user.Fname += user1.Fname;
-            user.Lname += user1.Lname;
-
-            return user;
+            Customer user1 = _context.Customers.FirstOrDefault(p => p.Fname == user.Fname && p.Lname == user.Lname);
+            return user1;
 
         }
 
@@ -73,6 +65,26 @@ namespace Repository
         {
             Customer foundCustomer = _context.Customers.FirstOrDefault(p => p.UserName == username);
             return foundCustomer;
+        }
+
+        public List<Book> GetBooks()
+        {
+            List<Book> books = new List<Book>();
+            books = _context.Books.ToList();
+            return books;
+        }
+
+        public bool BookExists(Book book)
+        {
+            //default is NULL
+            if (_context.Books.Where(b => b.Title == book.Title).FirstOrDefault() != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
 

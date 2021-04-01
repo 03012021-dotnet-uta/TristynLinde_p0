@@ -10,8 +10,9 @@ namespace Models
         [Key]
         public Guid OrderId { get; set; } = Guid.NewGuid();
         public Guid CustomerId { get; set; }
+        public string Store { get; set; }
         public DateTime Time { get; set; } = DateTime.Now;
-
-        ICollection<Pizza> Pizzas { get; set; } = new List<Pizza>();
+        public decimal Price { get; set; }
+        public ICollection<Book> Books { get; set; } = new List<Book>();
     }
 }
