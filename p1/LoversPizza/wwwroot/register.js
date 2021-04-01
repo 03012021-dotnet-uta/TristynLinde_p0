@@ -1,5 +1,15 @@
 const registerForm = document.getElementById('register');
 
+registerForm.confirmPassword.addEventListener('input', () => {
+  if (registerForm.confirmPassword.value != registerForm.password.value) {
+    registerForm.confirmPassword.setCustomValidity("Passwords must match");
+    registerForm.confirmPassword.reportValidity(); // Shows the popup bubble
+  }
+  else {
+    registerForm.confirmPassword.setCustomValidity("");
+  }
+})
+
 registerForm.addEventListener('submit', (event) => {
   event.preventDefault();//to prevent the form from submitting and resetting
 

@@ -73,26 +73,12 @@ namespace LoversPizza
             return customer;
         }
 
-        // GET api/<MemeController>/5
-        // [HttpGet("{id}")]
-        // public string Get(int id)
-        // {
-        //     return "value";
-        // }
-
-        // POST api/<LoversController>
-        [HttpPost]
-        // [Route("/postrequest")]
-        public Customer Post([FromBody] Customer obj)
+        [HttpGet("menu")]
+        public List<Book> PopulateMenu()
         {
-            Console.WriteLine($"YAY! we made it to the C# side with {obj.Fname}, {obj.Lname}. ");
-            //call a method in the business logic layer.
-            //the business logic layer implements business requirements. Thisi s where the majority of 
-            // the data manipulation will be.
-            Customer obj1 = _business.Login(obj);
-
-            return obj1;
+            List<Book> books = new List<Book>();
+            books = _business.ShowBooks();
+            return books;
         }
-
     }
 }

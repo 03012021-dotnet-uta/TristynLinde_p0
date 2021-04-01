@@ -35,7 +35,7 @@ namespace LoversPizza
             // add the Db context
             services.AddDbContext<loversContext>(options => options.UseSqlServer(connectionString));
             services.AddScoped<UserMethods>();
-            services.AddScoped<loversRepo>();
+            services.AddScoped<LoversRepo>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

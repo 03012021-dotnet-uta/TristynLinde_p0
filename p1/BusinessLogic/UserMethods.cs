@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Models;
 using Repository;
 
@@ -6,11 +7,11 @@ namespace BusinessLogic
 {
     public class UserMethods
     {
-        private readonly loversRepo _repolayer;
+        private readonly LoversRepo _repolayer;
         private readonly Mapper mapper = new Mapper();
 
-        public UserMethods() { }// create a parameterless constructor so that I can create this class in the testing suite.
-        public UserMethods(loversRepo repolayer)
+        public UserMethods() { }
+        public UserMethods(LoversRepo repolayer)
         {
             this._repolayer = repolayer;
         }
@@ -25,9 +26,6 @@ namespace BusinessLogic
             //call a method on the repository class that will query the Db
             // and return the verified person, if he exists.
             // otherwise return a Person with empty strings.
-            user.Fname += user.Lname;
-            user.Lname += user.Fname;
-
             Customer user1 = _repolayer.Login(user);
 
             return user1;
@@ -95,7 +93,12 @@ namespace BusinessLogic
             return true;
         }
 
-
+        public List<Book> ShowBooks()
+        {
+            List<Book> books = new List<Book>();
+            books = _repolayer.GetBooks();
+            return books;
+        }
 
     }// end of class
 }// end of namespace
