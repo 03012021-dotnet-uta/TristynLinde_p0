@@ -87,6 +87,25 @@ namespace Repository
             }
         }
 
+        public Order NewOrder(Guid custId, string storeName)
+        {
+            Order order = new Order();
+            order.Store = storeName;
+            order.CustomerId = custId;
+            var newOrder1 = _context.Orders.Add(order);
+            _context.SaveChanges();
+            return _context.Orders.FirstOrDefault(o => o.OrderId == order.OrderId);
+        }
 
+        public Order UpdateOrder(Guid orderId, Guid bookId)
+        {
+            Order order1 = _context.Orders.Where(o => o.OrderId == orderId).FirstOrDefault();
+            Book book1 = _context.Books.Where(b => b.BookId == bookId).FirstOrDefault();
+            order1.Books.Add(book1);
+            order1.Price = Decimal.Add(order1.Price, book1.Price);
+            var ord = _context.Orders.Update(order1);
+            _context.SaveChanges();
+            return order1;
+        }
     }
 }

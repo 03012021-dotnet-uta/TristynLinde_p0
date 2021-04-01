@@ -100,5 +100,18 @@ namespace BusinessLogic
             return books;
         }
 
+        public Order MakeOrder(Guid custId, string storeName)
+        {
+            Order newOrder = _repolayer.NewOrder(custId, storeName);//call a method on the repo layer to create and return the new order
+            return newOrder;
+        }
+
+        public Order UpdateOrder(Guid orderId, Guid bookId)
+        {
+            Order order1 = new Order();
+            order1 = _repolayer.UpdateOrder(orderId, bookId);//call a method on the repo layer to add the book to the order
+            return order1;
+        }
+
     }// end of class
 }// end of namespace
