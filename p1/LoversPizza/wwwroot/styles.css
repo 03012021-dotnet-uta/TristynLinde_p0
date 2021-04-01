@@ -22,6 +22,10 @@ footer {
     text-align: center;
 }
 
+body div.content {
+    margin-bottom: 50px;
+}
+
 #home-pg .left {
     width: 45%;
     float: left;

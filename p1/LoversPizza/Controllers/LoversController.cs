@@ -23,6 +23,7 @@ namespace LoversPizza
         [HttpPost("register")]
         public ActionResult<Customer> Register(RawCust rawCust)
         {
+            System.Console.WriteLine(rawCust.Fname);
             Customer customer = new Customer();
             if (!ModelState.IsValid)// did the conversion from JS to C# work?
             {
@@ -45,7 +46,7 @@ namespace LoversPizza
         }
 
         // THIS IS AN ACTION METHOD
-        // GET: api/<MemeController>
+        // GET: api/<LoversController>
         [HttpGet("login/{username}/{password}")]
         public ActionResult<Customer> Login(string username, string password)
         {
@@ -55,7 +56,7 @@ namespace LoversPizza
             if (!ModelState.IsValid)// did the conversion from JS to C# work?
             {
                 // return StatusCode(409, $"User '{rawPerson.UserName}' already exists.");
-                return StatusCode(400, "That was a failue of modelbinding");
+                return StatusCode(400, "That was a failure of modelbinding");
             }
             else
             {
@@ -79,7 +80,7 @@ namespace LoversPizza
         //     return "value";
         // }
 
-        // POST api/<MemeController>
+        // POST api/<LoversController>
         [HttpPost]
         // [Route("/postrequest")]
         public Customer Post([FromBody] Customer obj)

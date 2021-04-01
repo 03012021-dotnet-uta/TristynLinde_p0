@@ -1,12 +1,12 @@
 let loginForm = document.getElementById('user-info');
 
-loginForm.addEventListener('click', (event) => {
+loginForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
     const Username = loginForm.username.value.trim();
     const Password = loginForm.password.value.trim();
 
-    fetch(`api/lovers/login/${Username}/${Password}`)
+    fetch(`api/Lovers/login/${Username}/${Password}`)
     .then(response => {
         if (!response.ok) {
           throw new Error(`Network response was not ok (${response.status})`);
@@ -15,7 +15,6 @@ loginForm.addEventListener('click', (event) => {
           return response.json();
       })
       .then((jsonResponse) => {
-        responseDiv.textContent = `Welcome, ${jsonResponse.fname} ${jsonResponse.lname}. It's good to see you.`;
         console.log(jsonResponse);
         return jsonResponse;
       })

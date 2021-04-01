@@ -12,7 +12,7 @@ registerForm.addEventListener('submit', (event) => {
     password: registerForm.password.value.trim(),
   }
 
-  fetch('api/lovers/register', {
+  fetch('api/Lovers/register', {
     method: 'POST',
     headers: {
       'Accept': 'application/json',

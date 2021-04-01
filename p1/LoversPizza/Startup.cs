@@ -30,12 +30,12 @@ namespace LoversPizza
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            string connectionString = Configuration.GetConnectionString("loversDb");
+            string connectionString = Configuration.GetConnectionString("LoversDb");
 
             // add the Db context
             services.AddDbContext<loversContext>(options => options.UseSqlServer(connectionString));
-            services.AddScoped<UserMethods>();// THIS REGISTERS THE CLASS WITH THE DEPENDENCY INJECTION SYSTEM.
-            services.AddScoped<loversRepo>();// THIS REGISTERS THE CLASS WITH THE DEPENDENCY INJECTION SYSTEM.
+            services.AddScoped<UserMethods>();
+            services.AddScoped<loversRepo>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
