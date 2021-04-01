@@ -23,6 +23,7 @@ header h1 a {
 
 footer {
     position: relative;
+    bottom: 0;
     width: 100%;
     text-align: center;
 }
@@ -69,4 +70,23 @@ body div.content {
 #home-pg #login p {
     font-size: .75em;
     margin-top: -4%;
+}
+
+#menu-pg .popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+  
+#menu-pg .popup .popuptext {
+    width: 50%;
+    height: 50%;
+    background-color: #555;
+    color: #fff;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: fixed;
+    z-index: 1;
+    left: 25%;
+    top: 30%;
 }

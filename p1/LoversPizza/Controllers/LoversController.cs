@@ -80,5 +80,44 @@ namespace LoversPizza
             books = _business.ShowBooks();
             return books;
         }
+
+        [HttpGet("order/{custId}/{storeName}")]
+        public ActionResult<Order> MakeOrder(Guid custId, string storeName)
+        {
+            Order order1 = new Order();
+            if (!ModelState.IsValid)
+            {
+                // return StatusCode(409, $"User '{rawPerson.UserName}' already exists.");
+                return StatusCode(400, "That was a failure of modelbinding");
+            }
+            else
+            {
+                // here you will use the bussiness logic layer instance to pass the data to that layer and eventually save it to the Db.
+                //Console.WriteLine($"{rawperson.Fname}, {rawperson.Lname}");
+                order1 = _business.MakeOrder(custId, storeName);
+            }
+
+            return order1;
+        }
+
+        [HttpGet("update/{orderId}/{bookId}")]
+        public ActionResult<Order> MakeOrder(Guid orderId, Guid bookId)
+        {
+            Order order1 = new Order();
+
+            if (!ModelState.IsValid)
+            {
+                // return StatusCode(409, $"User '{rawPerson.UserName}' already exists.");
+                return StatusCode(400, "That was a failure of modelbinding");
+            }
+            else
+            {
+                // here you will use the bussiness logic layer instance to pass the data to that layer and eventually save it to the Db.
+                //Console.WriteLine($"{rawperson.Fname}, {rawperson.Lname}");
+                order1 = _business.UpdateOrder(orderId, bookId);
+            }
+
+            return order1;
+        }
     }
 }

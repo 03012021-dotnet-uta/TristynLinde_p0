@@ -20,8 +20,8 @@ loginForm.addEventListener('submit', (event) => {
       })
       .then(res => {
         //save the Person to localStorage
-        localStorage.setItem('customer', JSON.stringify(res));
-        //sessionStorage.setItem('personId', res.personId);
+        localStorage.setItem('customerId', res.customerId);
+        sessionStorage.setItem('customerId', res.customerId);
         //switch the screen
         location = 'menu.html';
       })
