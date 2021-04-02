@@ -2,6 +2,8 @@ let menu = document.querySelector('.menu');
 let bookList;
 let orderBooks = [];
 
+console.log(localStorage.getItem('customer'));
+
 // populate the html with info from db
 fetch('api/Lovers/menu')
 .then (response => {
@@ -12,7 +14,6 @@ fetch('api/Lovers/menu')
         return response.json();
 })
 .then ((jsonResponse) => {
-    console.log(jsonResponse);
     return jsonResponse;
 })
 .then(res => {

@@ -42,11 +42,12 @@ registerForm.addEventListener('submit', (event) => {
       return jsonResponse;
     })
     .then(res => {
-      //save the personId to localStorage
-      localStorage.setItem('customerId', res.customerId);// this is available to the whole browser
-      sessionStorage.setItem('customerId', res.customerId);// this is ony vailable to the certain window tab.
+      //save the customer and id to localStorage
+      let cust = JSON.stringify(res);
+      localStorage.setItem('customer', cust);
+      localStorage.setItem('customerId', res.customerId);
       //switch the screen
-      location = 'menu.html';// 
+      location = 'menu.html';
     })
     .catch(function(err) {  
         console.log('Failed to fetch page: ', err);  

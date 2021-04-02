@@ -1,12 +1,6 @@
 let orderId = localStorage.getItem('currOrderId');
 let orderBooks = JSON.parse(localStorage.getItem('orderBooks'));
 
-let customer = JSON.parse(localStorage.getItem('customer'));
-let custName = customer.fname + " " + customer.lname;
-
-// auto fill name input using current customer
-document.getElementById('name').value = custName;
-
 for (let i = 0; i < orderBooks.length; i+= 1)
 {
     // create html that takes info from localStorage
