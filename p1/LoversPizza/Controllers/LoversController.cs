@@ -119,5 +119,18 @@ namespace LoversPizza
 
             return order1;
         }
+
+        [HttpGet("cart/{orderId}")]
+        public ActionResult<List<Book>> PopulateCart(Guid orderId)
+        {
+            List<Book> books = new List<Book>();
+            books = _business.GetBooks(orderId);
+
+            if (books == null)
+            {
+                return StatusCode(409, "We're sorry, your new user was not successfully saved or a user of that username already exists.");
+            }
+            return books;
+        }
     }
 }

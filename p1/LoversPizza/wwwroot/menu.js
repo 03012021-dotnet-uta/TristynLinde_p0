@@ -1,5 +1,6 @@
 let menu = document.querySelector('.menu');
 let bookList;
+let orderBooks = [];
 
 // populate the html with info from db
 fetch('api/Lovers/menu')
@@ -59,9 +60,11 @@ document.getElementById('stores').addEventListener('submit', (event) => {
         return jsonResponse;
     })
     .then (res => {
-        localStorage.setItem('currOrder', res);// this is available to the whole browser
-        sessionStorage.setItem('currOrder', res);// this is ony vailable to the certain window tab.
-        localStorage.setItem('currOrderId', res.orderId);// this is available to the whole browser
+        let order = JSON.stringify(res);
+        localStorage.setItem('currOrder', order);// this is available to the whole browser
+        localStorage.setItem('currOrderId', res.orderId);
+        console.log(localStorage.getItem('currOrder'));
+        console.log(localStorage.getItem('currOrderId'));
     })
     .catch(function(err) {  
         console.log('Failed to fetch page: ', err);  
@@ -74,6 +77,7 @@ menu.addEventListener('click', (event) => {
         let orderId = localStorage.getItem('currOrderId');
         let clicked = parseInt(event.target.parentElement.id);
         let bookId = bookList[clicked].bookId;
+        orderBooks.push(bookList[clicked]);
 
         console.log(orderId + " " + bookId);
 
@@ -90,11 +94,19 @@ menu.addEventListener('click', (event) => {
             return jsonResponse;
         })
         .then (res => {
-            localStorage.setItem('currOrder', res);// this is available to the whole browser
-            sessionStorage.setItem('currOrder', res);// this is ony vailable to the certain window tab.
+            let order = JSON.stringify(res);
+            var myBooks = JSON.stringify(orderBooks);
+            localStorage.setItem('currOrder', order);// this is available to the whole browser
+            localStorage.setItem('orderBooks', myBooks);
+            console.log(localStorage.getItem('orderBooks'));
+            console.log(localStorage.getItem('currOrder'));
         })
         .catch(function(err) {  
             console.log('Failed to fetch page: ', err);  
         });
     }
+});
+
+document.getElementById("cartbutt").addEventListener('click', () => {
+    location = 'cart.html';
 });

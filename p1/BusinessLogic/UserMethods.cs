@@ -113,5 +113,12 @@ namespace BusinessLogic
             return order1;
         }
 
+        public List<Book> GetBooks(Guid orderId)
+        {
+            List<Book> books = new List<Book>();
+            books = _repolayer.ReturnBooks(orderId);
+            return books;
+        }
+
     }// end of class
 }// end of namespace
