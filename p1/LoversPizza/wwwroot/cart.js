@@ -9,7 +9,24 @@ for (i = 0; i < orderBooks.length; i+= 1)
     let summary = orderBooks[i].summary;
     let price = orderBooks[i].price.toFixed(2);
 
-    html += `id="${i}"><h4>${title}</h4><p class="author">${author}</p><p class="price">\$${price}</p><p class="summary">${summary}</p></div>`;
+    html += `id="${i}"><p id="amt${i}">1</p><h4>${title}</h4><p class="author">${author}</p><p class="price">\$${price}</p><p class="summary">${summary}</p></div>`;
+
+    for (let j = 0; j < i; j++)
+    {
+        // check to see if the book is a repeat
+        let prevtitle = orderBooks[j].title;
+        let prevauthor = orderBooks[j].author;
+
+        if (prevtitle == title && prevauthor == author)
+        {
+            // Increment the amount variable and don't print the repeated book info
+            let bookAmount = parseInt(document.getElementById(`amt${j}`).innerHTML);
+            bookAmount += 1;
+
+            document.getElementById(`amt${j}`).innerHTML = bookAmount;
+            html = "";
+        }
+    }
     document.getElementById('books').innerHTML += html;
 }
 
