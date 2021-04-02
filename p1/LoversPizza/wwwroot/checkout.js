@@ -15,7 +15,7 @@ for (let i = 0; i < orderBooks.length; i+= 1)
     let author = orderBooks[i].author;
     let price = orderBooks[i].price.toFixed(2);
 
-    html += `id="${i}"><p id="amt${i}">1</p><h4>${title}</h4><p class="author">${author}</p><p class="price">\$${price}</p></div>`;
+    html += `id="${i}"><p class="amt" id="amt${i}">1</p><h4>${title}</h4><p class="author">${author}</p><p class="price">\$${price}</p><hr></div>`;
 
     for (let j = 0; j < i; j++)
     {
@@ -45,8 +45,8 @@ document.querySelector('.cart').innerHTML += `<p>\$${totPrice}</p>`;
 document.getElementById('checkoutinfo').addEventListener('submit', (event) => {
     event.preventDefault();
 
-    localStorage.delete("currOrder");
-    localStorage.delete("currOrderId");
-    localStorage.delete("orderBooks");
+    localStorage.removeItem("currOrder");
+    localStorage.removeItem("currOrderId");
+    localStorage.removeItem("orderBooks");
     location = 'afterCheckout.html';
 });

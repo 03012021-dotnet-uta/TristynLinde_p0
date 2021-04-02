@@ -25,7 +25,7 @@ fetch('api/Lovers/menu')
         let summary = res[i].summary;
         let price = res[i].price.toFixed(2);
 
-        html += `id="${i}"><h4>${title}</h4><p class="author">${author}</p><p class="price">\$${price}</p><p class="summary">${summary}</p></div>`;
+        html += `id="${i}"><h4>${title}</h4><p class="author">${author}</p><p class="price">\$${price}</p><p class="summary">${summary}</p><p class="added" id="added${i}" style="display: none;">Added to Order</p><br></div><hr>`;
         menu.innerHTML += html;
         var button = document.createElement("button");
         button.appendChild(document.createTextNode("Add to Order"));
@@ -40,7 +40,7 @@ fetch('api/Lovers/menu')
 document.getElementById('stores').addEventListener('submit', (event) => {
     event.preventDefault();
 
-    event.target.parentElement.style.display = "none";
+    event.target.parentElement.parentElement.style.display = "none";
 
     let store = document.querySelector('input[name="store"]:checked').value;
     let custId = localStorage.getItem("customerId");
@@ -79,7 +79,8 @@ menu.addEventListener('click', (event) => {
         let bookId = bookList[clicked].bookId;
         orderBooks.push(bookList[clicked]);
 
-        console.log(orderId + " " + bookId);
+        document.getElementById(`added${clicked}`).style.display = "inline-block";
+        setTimeout(() => document.getElementById(`added${clicked}`).style.display = "none", 1500);
 
         fetch(`api/Lovers/update/${orderId}/${bookId}`)
         .then (response => {

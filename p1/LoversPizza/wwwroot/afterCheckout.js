@@ -3,7 +3,7 @@ document.getElementById('again').addEventListener('click', () => {
 });
 
 document.getElementById('past').addEventListener('click', () => {
-    localStorage.delete("customer");
-    localStorage.delete("customerId");
+    localStorage.removeItem("customer");
+    localStorage.removeItem("customerId");
     location = "index.html";
 });

@@ -1,5 +1,9 @@
 let loginForm = document.getElementById('user-info');
 
+loginForm.addEventListener('input', (event) => {
+  loginForm.password.setCustomValidity("");
+});
+
 loginForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
@@ -9,10 +13,15 @@ loginForm.addEventListener('submit', (event) => {
     fetch(`api/Lovers/login/${Username}/${Password}`)
     .then(response => {
         if (!response.ok) {
+          loginForm.password.setCustomValidity("Username or Password is Incorrect");
+          loginForm.password.reportValidity(); // Shows the popup bubble
+
           throw new Error(`Network response was not ok (${response.status})`);
         }
-        else       // When the page is loaded convert it to text
+        else
+        {
           return response.json();
+        }
       })
       .then((jsonResponse) => {
         console.log(jsonResponse);

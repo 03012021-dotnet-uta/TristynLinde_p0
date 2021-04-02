@@ -9,7 +9,7 @@ for (i = 0; i < orderBooks.length; i+= 1)
     let summary = orderBooks[i].summary;
     let price = orderBooks[i].price.toFixed(2);
 
-    html += `id="${i}"><p id="amt${i}">1</p><h4>${title}</h4><p class="author">${author}</p><p class="price">\$${price}</p><p class="summary">${summary}</p></div>`;
+    html += `id="${i}"><p class="amt" id="amt${i}">1</p><h4>${title}</h4><p class="author">${author}</p><p class="price">\$${price}</p><p class="summary">${summary}</p><hr></div>`;
 
     for (let j = 0; j < i; j++)
     {
