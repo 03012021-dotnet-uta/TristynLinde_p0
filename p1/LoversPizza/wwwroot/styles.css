@@ -40,7 +40,7 @@ body div.content {
 #home-pg .left {
     width: 45%;
     float: left;
-    padding: 12.5% 0 0 8%;
+    padding: 10% 0 0 8%;
 }
 
 #home-pg h1 {
@@ -55,7 +55,7 @@ body div.content {
 #home-pg .right {
     width: 30%;
     float: right;
-    padding-top: 15%;
+    padding-top: 12%;
     padding-right: 10%;
 }
 
@@ -69,6 +69,29 @@ body div.content {
     display: inline-block;
     width: 25%;
     margin-bottom: 5%;
+    font-size: .8em;
+}
+
+#register-pg body {
+    width: 100vw;
+}
+
+#register-pg #register input {
+    width: 500px;
+    height: 30px;
+    margin-bottom: 1%;
+}
+
+
+#register-pg #register input[type="submit"] {
+    width: 300px;
+    height: 50px;
+    font-size: 1.1em;
+    margin-top: 0;
+}
+
+input {
+    border: none;
 }
 
 input[type="submit"] {
@@ -209,6 +232,32 @@ button {
     font-weight: 700;
     margin-top: 7.5%;
     margin-bottom: -2%;
+}
+
+#checkout-pg #checkoutinfo {
+    margin-left: 2%;
+    margin-top: 10%;
+}
+
+#checkout-pg #checkoutinfo input {
+    width: 200px;
+    height: 25px;
+    margin-bottom: 3%;
+}
+
+#checkout-pg #checkoutinfo #exp-date, #checkout-pg #checkoutinfo #cvc {
+    width: 100px;
+    margin-right: 2%;
+}
+
+#checkout-pg #checkoutinfo input[type="submit"] {
+    width: 300px;
+    height: 50px;
+    background-color: #6897d1;
+    border: none;
+    font-weight: 500;
+    border-radius: 5px;
+    font-size: 1em;
 }
 
 #after-pg body {

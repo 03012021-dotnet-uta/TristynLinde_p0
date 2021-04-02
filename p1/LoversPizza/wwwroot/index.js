@@ -24,13 +24,13 @@ loginForm.addEventListener('submit', (event) => {
         }
       })
       .then((jsonResponse) => {
-        console.log(jsonResponse);
         return jsonResponse;
       })
       .then(res => {
-        //save the Person to localStorage
+        //save the customer to localStorage
+        let cust = JSON.stringify(res);
+        localStorage.setItem('customer', cust);
         localStorage.setItem('customerId', res.customerId);
-        sessionStorage.setItem('customerId', res.customerId);
         //switch the screen
         location = 'menu.html';
       })
