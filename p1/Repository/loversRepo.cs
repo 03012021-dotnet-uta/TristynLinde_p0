@@ -74,19 +74,6 @@ namespace Repository
             return books;
         }
 
-        public bool BookExists(Book book)
-        {
-            //default is NULL
-            if (_context.Books.Where(b => b.Title == book.Title).FirstOrDefault() != null)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
         public Order NewOrder(Guid custId, string storeName)
         {
             Order order = new Order();
@@ -106,6 +93,14 @@ namespace Repository
             var ord = _context.Orders.Update(order1);
             _context.SaveChanges();
             return order1;
+        }
+
+        public List<Book> ReturnBooks(Guid orderId)
+        {
+            Order order1 = _context.Orders.Where(o => o.OrderId == orderId).FirstOrDefault();
+            List<Book> books = order1.Books.ToList();
+            Console.WriteLine(books[0]);
+            return books;
         }
     }
 }

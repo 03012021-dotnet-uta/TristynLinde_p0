@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Repository;
 
 namespace Repository.Migrations
 {
     [DbContext(typeof(loversContext))]
-    partial class loversContextModelSnapshot : ModelSnapshot
+    [Migration("20210401225648_migration6")]
+    partial class migration6
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -52,7 +54,7 @@ namespace Repository.Migrations
                     b.HasData(
                         new
                         {
-                            BookId = new Guid("21d3dc8a-a22a-436c-8d77-67ae5979dfb2"),
+                            BookId = new Guid("de9bbf43-5286-4da2-b786-6d7943673a79"),
                             Author = "Antoine de Saint-Exupery",
                             NumberAvailable = 15,
                             Price = 13.25m,
@@ -61,7 +63,7 @@ namespace Repository.Migrations
                         },
                         new
                         {
-                            BookId = new Guid("5d73359c-d30d-4bc9-bcdc-636f4becd399"),
+                            BookId = new Guid("cc08471b-b967-427e-90dc-552ef46704c6"),
                             Author = "Thomas Hobbes",
                             NumberAvailable = 5,
                             Price = 23.50m,
@@ -70,7 +72,7 @@ namespace Repository.Migrations
                         },
                         new
                         {
-                            BookId = new Guid("8c44ea9b-8381-4e7d-9270-66b37d43f6a1"),
+                            BookId = new Guid("8de8bf6f-dd08-46bd-b1ee-4f86f30d8627"),
                             Author = "Jacob and Wilhelm Grimm",
                             NumberAvailable = 3,
                             Price = 19.25m,
@@ -130,11 +132,9 @@ namespace Repository.Migrations
 
             modelBuilder.Entity("Models.Book", b =>
                 {
-                    b.HasOne("Models.Order", "Order")
+                    b.HasOne("Models.Order", null)
                         .WithMany("Books")
                         .HasForeignKey("OrderId");
-
-                    b.Navigation("Order");
                 });
 
             modelBuilder.Entity("Models.Order", b =>
